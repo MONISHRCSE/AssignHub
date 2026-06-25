@@ -3,6 +3,7 @@ import 'package:file_picker/file_picker.dart';
 import '../../core/api_client.dart';
 import '../../core/exceptions.dart';
 import 'package:dio/dio.dart';
+import 'dart:io' as io;
 
 class BulkImportScreen extends StatefulWidget {
   const BulkImportScreen({super.key});
@@ -48,7 +49,10 @@ class _BulkImportScreenState extends State<BulkImportScreen> {
     setState(() { _uploading = true; _error = null; _batchResult = null; });
 
     try {
-      final bytes = file.bytes;
+      var bytes = file.bytes;
+      if (bytes == null && file.path != null) {
+        bytes = await io.File(file.path!).readAsBytes();
+      }
       if (bytes == null) {
         setState(() => _error = 'Could not read file');
         return;

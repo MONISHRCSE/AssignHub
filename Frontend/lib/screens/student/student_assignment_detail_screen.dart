@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:intl/intl.dart';
+import 'dart:io' as io;
 import '../../providers/assignment_provider.dart';
 import '../../services/submission_service.dart';
 import '../../services/storage_service.dart';
@@ -63,7 +64,15 @@ class _StudentAssignmentDetailScreenState extends ConsumerState<StudentAssignmen
     final result = await FilePicker.platform.pickFiles(type: FileType.any);
     if (result == null || result.files.isEmpty) return;
     final file = result.files.first;
-    if (file.bytes == null) return;
+    
+    var bytes = file.bytes;
+    if (bytes == null && file.path != null) {
+      bytes = await io.File(file.path!).readAsBytes();
+    }
+    if (bytes == null) {
+      setState(() => _error = 'Could not read selected file');
+      return;
+    }
 
     setState(() { _fileUploading = true; _error = null; });
     try {

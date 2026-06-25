@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:file_picker/file_picker.dart';
+import 'dart:io' as io;
 import '../../services/assignment_service.dart';
 import '../../services/storage_service.dart';
 import '../../core/exceptions.dart';
@@ -41,7 +42,15 @@ class _CreateAssignmentScreenState extends State<CreateAssignmentScreen> {
     final result = await FilePicker.platform.pickFiles(type: FileType.custom, allowedExtensions: ['pdf']);
     if (result == null || result.files.isEmpty) return;
     final file = result.files.first;
-    if (file.bytes == null) return;
+    
+    var bytes = file.bytes;
+    if (bytes == null && file.path != null) {
+      bytes = await io.File(file.path!).readAsBytes();
+    }
+    if (bytes == null) {
+      setState(() => _error = 'Could not read selected PDF file');
+      return;
+    }
 
     setState(() { _fileUploading = true; _error = null; });
     try {
