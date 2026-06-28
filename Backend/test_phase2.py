@@ -37,11 +37,10 @@ def run_integration_test():
         print(f"[-] Signup failed: {r_signup.text}")
         return
 
-    # Check DB for User
     user = db.query(User).filter(User.email == email).first()
     print(f"[*] DB Check: User status is '{user.status}' (Expected: PENDING_OTP)")
 
-    # 2. Get OTP from DB
+
     ov = db.query(OtpVerification).filter(
         OtpVerification.email == email, 
         OtpVerification.used == False
@@ -49,8 +48,7 @@ def run_integration_test():
     
     otp = ov.otp_code
     print(f"[*] Fetched OTP from DB directly: {otp}")
-
-    # 3. Verify OTP
+   
     print("\n[+] Testing POST /admin/verify-otp...")
     r_verify = requests.post(f"{base_url}/admin/verify-otp", json={
         "email": email,
@@ -62,12 +60,9 @@ def run_integration_test():
     else:
         print(f"[-] OTP Verify failed: {r_verify.text}")
         return
-
-    # Check DB for User
     db.refresh(user)
     print(f"[*] DB Check: User status is '{user.status}' (Expected: ACTIVE)")
 
-    # 4. Login
     print("\n[+] Testing POST /login...")
     r_login = requests.post(f"{base_url}/login", json={
         "email": email,

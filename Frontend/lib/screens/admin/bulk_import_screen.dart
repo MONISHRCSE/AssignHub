@@ -41,11 +41,7 @@ class _BulkImportScreenState extends State<BulkImportScreen> {
     if (result == null || result.files.isEmpty) return;
 
     final file = result.files.first;
-    if (file.extension?.toLowerCase() != 'xlsx') {
-      setState(() => _error = 'Only .xlsx files are supported');
-      return;
-    }
-
+    
     setState(() { _uploading = true; _error = null; _batchResult = null; });
 
     try {
