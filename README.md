@@ -1,153 +1,208 @@
-# AssignHub: Intelligent Classroom & Assignment Management 🎓
+# AssignHub 🎓
 
-[![Flutter](https://img.shields.io/badge/Flutter-Android-02569B?style=for-the-badge&logo=flutter)](https://flutter.dev/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-Python-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-336791?style=for-the-badge&logo=postgresql)](https://www.postgresql.org/)
-[![AWS S3](https://img.shields.io/badge/AWS_S3-Storage-569A31?style=for-the-badge&logo=amazon-s3)](https://aws.amazon.com/s3/)
-[![Firebase](https://img.shields.io/badge/Firebase-FCM-FFCA28?style=for-the-badge&logo=firebase)](https://firebase.google.com/)
+**Intelligent Classroom & Assignment Management Platform**
 
-> *DevFusion 3.0 Hackathon — Problem Statement #26ENAH1*
+[![Flutter](https://img.shields.io/badge/Flutter-Dart-02569B?logo=flutter&logoColor=white)](https://flutter.dev)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Python%203.11-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-336791?logo=postgresql&logoColor=white)](https://www.postgresql.org)
+[![AWS S3](https://img.shields.io/badge/AWS-S3-FF9900?logo=amazonaws&logoColor=white)](https://aws.amazon.com/s3/)
+[![Firebase](https://img.shields.io/badge/Firebase-FCM-FFCA28?logo=firebase&logoColor=white)](https://firebase.google.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
----
+> Built for **DevFusion 3.0 Hackathon** — Problem Statement #26ENAH1
 
-## Problem Statement
-
-- **Administrative Overhead:** Traditional classroom management relies on fragmented tools for assignments, grading, and communication, leading to massive administrative burdens for educators.
-- **Lack of Real-Time Insights:** Mentors often realize a student is struggling only after they fail an exam or miss multiple assignments. There is no automated, real-time tracking of student "risk levels".
-- **Inefficient Provisioning:** Onboarding hundreds of students and mentors at the start of an academic year requires tedious manual data entry, prone to human error.
-- **Fragmented Communication:** Important deadlines and grades are easily missed when hidden inside static portals instead of direct mobile push notifications.
-- There is a critical need for a **unified, intelligent assignment management platform** that automates administrative tasks, tracks student performance continuously, and centralizes the educational workflow.
+AssignHub is a mobile-first educational platform that automates classroom administration, tracks student performance in real time, and centralizes the entire assignment lifecycle — from creation to grading — for Admins, Mentors, and Students.
 
 ---
 
-## Project Objective
+## 🧩 Problem & Solution
 
-**AssignHub** is a comprehensive, mobile-first educational platform engineered to assist educators and students in managing their daily academic workflow with automated analytics and real-time communication.
+Traditional classroom management is fragmented across disconnected tools for assignments, grading, and communication — creating heavy administrative overhead and leaving mentors blind to struggling students until it's too late. Onboarding hundreds of users each year is manual and error-prone, and important deadlines get buried in static portals instead of reaching students directly.
 
-The platform aims to:
-- **Intelligent Analytics Engine:** Automatically flag "At-Risk" students based on their submission delays and missed deadlines, allowing for early intervention.
-- **Smart Provisioning:** Empower administrators to instantly onboard entire classrooms using automated Bulk Excel imports.
-- **Real-Time Synchronization:** Keep students and mentors perfectly aligned with live WebSockets and Firebase Cloud Messaging (FCM) for instant deadline and grade alerts.
-- **Comprehensive Lifecycle Management:** Handle the complete flow of creating, publishing, submitting, versioning, and grading assignments in one secure place.
+**AssignHub solves this with:**
 
----
-
-## Sustainable Development Goals (SDGs)
-
-This project aligns with the following United Nations Sustainable Development Goals:
-
-### SDG 4: Quality Education
-- **Target 4.1:** Supports effective and inclusive learning environments by providing educators with the analytics needed to intervene early when students are struggling, improving overall educational outcomes.
-
-### SDG 10: Reduced Inequalities
-- **Target 10.2:** Democratizes access to high-quality educational tracking tools, ensuring that institutions of all sizes can easily deploy enterprise-grade classroom management without massive IT budgets.
+| Problem | AssignHub's Solution |
+|---|---|
+| No early warning for struggling students | **Intelligent Analytics Engine** auto-flags "At-Risk" students from submission delays and missed deadlines |
+| Manual, error-prone onboarding | **Smart Provisioning** via one-click bulk Excel imports for entire classrooms |
+| Missed deadlines & grades | **Real-time sync** via WebSockets + Firebase Cloud Messaging push alerts |
+| Fragmented assignment workflow | **End-to-end lifecycle management** — create, publish, submit, version, and grade in one place |
 
 ---
 
-## Proposed Solution
+## ✨ Key Features
 
-AssignHub uses a **Role-Based Architecture** tailored perfectly for the three distinct pillars of education: Administrators, Mentors, and Students.
-
-### Architecture & Workflow:
-
-1. **Smart Provisioning (Admin):** Admins upload an Excel template or manually input data. The backend automatically creates secure accounts and emails OTP invitations to users.
-2. **Classroom Setup (Mentor):** Mentors review pending student rosters, approve legitimate students (which generates their analytics profiles), and manage their classrooms.
-3. **Assignment Pipeline:** Mentors publish assignments with rich-text instructions. The system blasts push notifications to all enrolled students.
-4. **Submission Engine:** Students upload their work (stored securely in AWS S3) or type answers. The system versions their submissions and issues digital receipts.
-5. **Analytics & Intelligence:** 
-   - **Student Dashboard:** Tracks individual submission rates and deadlines.
-   - **Mentor Dashboard:** Aggregates class performance, flags "At-Risk" students, and provides a bird's-eye view of class health.
+- **Role-based dashboards** — purpose-built interfaces for Admins, Mentors, and Students
+- **At-risk student detection** — automated flagging based on submission behavior
+- **Live push notifications** — instant FCM alerts for new assignments and grades
+- **Bulk onboarding** — import thousands of users via `.xlsx`, with automated OTP email invites
+- **Versioned submissions** — secure AWS S3 storage with digital receipts for every submission
+- **API-first backend** — fully documented REST endpoints with WebSocket support
 
 ---
 
-## 🛠️ Technologies Used
+## 📸 Demo / Screenshots
 
-### **Frontend Stack (Mobile)**
-- **Framework:** Flutter (Dart)
-- **Target Platform:** Android 
-- **State Management:** Provider / Riverpod 
-- **Real-Time Communication:** WebSockets & Firebase Cloud Messaging (FCM)
-- **File Handling:** `file_picker` for native Excel and document uploads
+<table>
+  <tr>
+    <th align="center">Login / OTP</th>
+    <th align="center">Admin Dashboard</th>
+    <th align="center">Mentor Dashboard</th>
+    <th align="center">Student Dashboard</th>
+    <th align="center">Analytics / At-Risk View</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://github.com/user-attachments/assets/e16fc10d-a7eb-4270-bc08-3a435c2c4dec" width="160" height="auto"/></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/40673d64-9cdd-4f16-8891-b03e6096b22c" width="160" height="auto"/></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/463a0ac7-21fe-4314-be72-9a3fbb865e3c" width="160" height="auto"/></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/09877d48-7a3c-4449-aac0-4d6921d8bec0" width="160" height="auto"/></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/7ec38513-6cad-4e34-9f63-6f6ba82c6887" width="160" height="auto"/></td>
+  </tr>
+</table>
 
-### **Backend Stack**
-- **Framework:** FastAPI (Python 3.11+)
-- **Database:** PostgreSQL (via SQLAlchemy ORM)
-- **Authentication:** JWT (JSON Web Tokens) + Email OTPs
-- **File Storage:** AWS S3 (boto3)
-- **Background Jobs:** APScheduler (for deadline monitoring)
-- **Data Processing:** pandas & openpyxl (for Bulk Imports)
+DEMO VIDEO:[Click here for demo video](https://drive.google.com/file/d/1QuutdGipauVajh9Xh6h6Q96BQIDq_MKj/view?usp=drivesdk)
+
 
 ---
 
-## 🚀 Installation & Setup
+## 🏗️ Architecture
+
+<img width="1536" height="1024" alt="ChatGPT Image Jun 26, 2026, 03_59_37 PM" src="https://github.com/user-attachments/assets/335d833c-5e51-45a3-8315-711f01674717" />
+
+
+**Roles & Flow:**
+1. **Admin** bulk-uploads rosters (Excel) → backend auto-creates accounts and emails OTP invites
+2. **Mentor** approves pending students → analytics profiles generated → manages classroom
+3. **Mentor** publishes assignments → push notification blast to enrolled students
+4. **Student** submits work (stored in S3) → system versions it and issues a digital receipt
+5. **Analytics engine** continuously tracks submission patterns and flags at-risk students
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend (Mobile)
+| Component | Technology |
+|---|---|
+| Framework | Flutter (Dart) |
+| Target Platform | Android |
+| State Management | Provider / Riverpod |
+| Real-Time | WebSockets, Firebase Cloud Messaging (FCM) |
+| File Handling | `file_picker` for Excel/document uploads |
+
+### Backend
+| Component | Technology |
+|---|---|
+| Framework | FastAPI (Python 3.11+) |
+| Database | PostgreSQL via SQLAlchemy ORM |
+| Auth | JWT + Email OTP |
+| File Storage | AWS S3 (`boto3`) |
+| Background Jobs | APScheduler (deadline monitoring) |
+| Data Processing | `pandas`, `openpyxl` (bulk imports) |
+| Deployment | Render |
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
-- Flutter SDK (Android Toolchain)
+- Flutter SDK (Android toolchain)
 - Python 3.9+
 - PostgreSQL
 
-### 1. Clone the Repository
+### 1. Clone the repository
 ```bash
-git clone https://github.com/YourUsername/AssignHub.git
-cd AssignHub
+git clone https://github.com/praveenscode-ctrl/iit-hackathon-project-.git
+cd iit-hackathon-project-
 ```
 
-### 2. Start the Backend Server
+### 2. Backend setup
 ```bash
 cd Backend
 python -m venv venv
-venv\Scripts\activate        # On Windows
-# source venv/bin/activate   # On macOS/Linux
+venv\Scripts\activate        # Windows
+# source venv/bin/activate   # macOS/Linux
 
 pip install -r requirements.txt
-cp .env.example .env         # Fill in your DB, AWS, and SMTP keys
+cp .env.example .env         # fill in DB, AWS, and SMTP credentials
 
-alembic upgrade head         # Run database migrations
+alembic upgrade head         # run database migrations
 uvicorn main:app --reload --port 8000
 ```
-*The API will be available at `http://localhost:8000/docs`*
+API will be live at `http://localhost:8000/docs` (interactive Swagger UI).
 
-### 3. Start the Frontend Application
+### 3. Frontend setup
 ```bash
 cd ../Frontend
 flutter pub get
 flutter run
 ```
-*Make sure an Android Emulator or physical device is connected.*
+Make sure an Android emulator or physical device is connected.
 
-### 4. Build Production APK
+### 4. Build production APK
 ```bash
 cd Frontend
 flutter build apk --release
 ```
-*Output: `Frontend/build/app/outputs/flutter-apk/app-release.apk`*
+Output: `Frontend/build/app/outputs/flutter-apk/app-release.apk`
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env` file in `Backend/` based on `.env.example`:
+
+| Variable | Description |
+|---|---|
+| `DATABASE_URL` | PostgreSQL connection string |
+| `JWT_SECRET_KEY` | Secret key for signing JWTs |
+| `AWS_ACCESS_KEY_ID` | AWS IAM access key for S3 |
+| `AWS_SECRET_ACCESS_KEY` | AWS IAM secret key for S3 |
+| `AWS_S3_BUCKET` | S3 bucket name for submissions |
+| `SMTP_HOST` / `SMTP_USER` / `SMTP_PASSWORD` | Email service for OTP delivery |
+| `FCM_SERVER_KEY` | Firebase Cloud Messaging server key |
+
+> ⚠️ Never commit `.env` — it's already excluded via `.gitignore`.
 
 ---
 
 ## 📊 Project Status
 
 | Domain | Status | Notes |
-|:-------|:-------|:------|
-| **Frontend App** | ✅ **Stable** | Fully responsive Android UI completed |
-| **Backend API** | ✅ **Production-Ready** | 70/70 Integration Tests Passing |
-| **Authentication** | ✅ **Secure** | JWT & Email OTP verification active |
-| **Analytics Engine**| ✅ **Active** | Real-time risk assessment operational |
-| **Bulk Import** | ✅ **Active** | Excel (.xlsx) parsing and validation working |
+|---|---|---|
+| Frontend App | ✅ Stable | Responsive Android UI complete |
+| Backend API | ✅ Functional | Core endpoints tested and working |
+| Authentication | ✅ Implemented | JWT + Email OTP verification |
+| Analytics Engine | ✅ Active | Real-time risk assessment operational |
+| Bulk Import | ✅ Active | Excel (`.xlsx`) parsing and validation |
 
 ---
 
-## 🎯 Key Features
+## 🌍 SDG Alignment
 
-- ✅ **Context-Aware Dashboards:** Distinct, optimized interfaces for Admins, Mentors, and Students.
-- ✅ **Intelligent Risk Alerts:** Automated flagging of students falling behind on deadlines.
-- ✅ **Live Push Notifications:** FCM integration for instant grading and assignment alerts.
-- ✅ **Frictionless Onboarding:** 1-click bulk import for thousands of users via `.xlsx`.
-- ✅ **Immutable Submissions:** Secure version tracking and digital receipts for all student work.
-- ✅ **API-First Design:** Fully documented RESTful endpoints with WebSocket support.
+- **SDG 4 — Quality Education:** Gives educators the analytics needed to intervene early when students fall behind, improving learning outcomes.
+- **SDG 10 — Reduced Inequalities:** Makes enterprise-grade classroom management accessible to institutions of any size, without large IT budgets.
 
 ---
 
-<p align="center">
-  <strong>Empowering Education Through Intelligent Systems</strong><br>
-  Built with ❤️ by Monish
-</p>
+## 🗺️ Roadmap
+
+- [ ] iOS support
+- [ ] AI-assisted grading suggestions
+- [ ] Parent/guardian portal
+- [ ] Offline-first submission queue
+- [ ] CI/CD pipeline with automated test coverage reporting
+
+---
+
+## 👥 Team
+
+| Name | GitHub |
+|---|---|
+| Monish R | [@MONISHRCSE](https://github.com/MONISHRCSE) |
+| Praveen S | [@praveenscode-ctrl](https://github.com/praveenscode-ctrl) |
+| Jaisimha | [[@Jaisimha](https://github.com/praveenscode-ctrl)] |
+
+
+
+<p align="center">Empowering Education Through Intelligent Systems 💙</p>
